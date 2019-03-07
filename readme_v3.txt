@@ -17,3 +17,8 @@
 
 版本2：初步优化了显示界面。
            增加了AbstractBookView类和BookViewConsole类，BookViewConsole类实现了前者的抽象方法。
+
+版本3：优化了文件IO，实现了字符流的输入输出
+           增加了FileUtil类和Bookinfo.dat文件
+
+
