@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class BookInfo implements Serializable   //序列化
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4317091309079389275L;
 	private String isbn;     //ISBN
 	private String name;     //书名
 	private String type;     //类别

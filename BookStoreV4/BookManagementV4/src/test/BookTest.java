@@ -1,13 +1,17 @@
 package test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
+import auth.Role;
 import biz.BookInfoBiz;
 import biz.impl.BookInfoBizImplV1;
 import entity.Book;
 import entity.BookInfo;
+import entity.User;
 import util.FileUtil;
 
 public class BookTest
@@ -17,7 +21,34 @@ public class BookTest
 	{
 		//测试图书实体类的定义();
 		//测试图书业务类();
-		测试图书的入库和出库();
+		//测试图书的入库和出库();
+		//测试角色();
+		测试用户类();
+	}
+	
+	public static void 测试用户类() {
+		User user = new User(new Role("a","operator"));
+		user.setUserName("testusername");
+		user.setPassword("testpassword");
+		Set<User> userSet = new HashSet<>();
+		userSet.add(user);
+		FileUtil.SaveUser(userSet);
+		
+		userSet = FileUtil.ReadUser();
+		for(User u:userSet) {
+			System.err.println(user.getUserName()+","+user.getPassword());
+		}
+	}
+	
+	public static void 测试角色() {
+		Role role1 = new Role();
+		System.out.println(role1.getName()+":"+role1.getKey());
+		System.out.println("权限集合"+role1.getPermissions());
+		System.out.println(role1.inStore("123", 3));
+		Role role2 = new Role("操作员","administrator");
+		System.out.println(role2.getName()+":"+role2.getKey());
+		System.out.println("权限集合："+role2.getPermissions());
+		System.out.println(role2.inStore("123", 3));
 	}
 	
 	public static void 测试图书的入库和出库() {

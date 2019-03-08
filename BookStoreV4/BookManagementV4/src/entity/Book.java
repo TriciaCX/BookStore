@@ -10,6 +10,10 @@ import java.io.Serializable;
  */
 public class Book implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5984025423189188041L;
 	private String isbn;
 	private String bookId;
 	private BookState state;

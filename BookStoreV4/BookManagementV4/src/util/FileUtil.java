@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Map;
+import java.util.Set;
 
 import entity.BookInfo;
+import entity.User;
 
 /**
  * 文件工具类
@@ -19,6 +21,23 @@ public class FileUtil
     //本程序中，为了操作方便，将图书信息以对象流的方式放在文件中
 	private static final String BookInfoFilePath = "BookInfo.dat";  //相对于本程序的工程根目录
 	
+	private static final String UserInfoFilePath = "UserInfo.dat";
+	/**
+	 * 将传入的用户set写入到文件中
+	 * @param userSet
+	 */
+	public static void SaveUser(Set<User> userSet) {
+		SaveObject(userSet,UserInfoFilePath);
+	}
+	/**
+	 * 读文件
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static Set<User> ReadUser(){
+		return (Set<User>)ReadObeject(UserInfoFilePath);
+	}
+	
 	/**
 	 * 将传入的BookInfo的map信息存放在对应的文件中
 	 * @param bookInfoMap
@@ -29,7 +48,7 @@ public class FileUtil
 	
 	@SuppressWarnings("unchecked")
 	public static Map<String,BookInfo> ReadBookInfoMap(){
-		Object obj = ReadObejct(BookInfoFilePath);
+		Object obj = ReadObeject(BookInfoFilePath);
 		if(obj==null) return null;
 		return(Map<String,BookInfo>)obj;
 	}
@@ -56,7 +75,7 @@ public class FileUtil
 	 * @param filePath
 	 * @return
 	 */
-	public static Object ReadObejct(String filePath) {
+	public static Object ReadObeject(String filePath) {
 		try(
 			FileInputStream fin = new FileInputStream(filePath);
 			ObjectInputStream in = new ObjectInputStream(fin);
