@@ -58,4 +58,5 @@ CONTROLLER--biz      业务类
 User（用户类）
 
 2、工厂模式
+
 具体实现参加https://blog.csdn.net/weixin_43277507/article/details/88322597
